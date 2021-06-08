@@ -28,29 +28,29 @@ class SinglyLinkedList:
 
 
     # Insert after a Node
-    def insert(self, node, data):
-        if not Node:
-            print("The given previous node must be in the linkedList")
+    def insert(self, pos, data):
+        if pos == 0:
+            self.prepend(data)
             return
+
+        leader = self._get_targeted_node(pos-1)
+
+        if not leader: return
+
         new_node = Node(data)
-        new_node.next = node.next
-        node.next = new_node
+        new_node.next = leader.next
+        leader.next = new_node
 
 
     def remove(self, pos):
         if not self.head: return
 
-        leader = self.head
+        leader = self._get_targeted_node(pos-1)
 
         if pos == 0:
             self.head = leader.next
             leader = None
             return
-
-        for i in range(pos-1):
-            leader = leader.next
-            if leader is None:
-                break
 
         if not leader: return
 
@@ -69,6 +69,19 @@ class SinglyLinkedList:
         print()
 
 
+    # Helper function to get the node in a given index
+    def _get_targeted_node(self, pos):
+
+        if not self.head: return
+
+        current = self.head
+        for i in range(pos):
+            current = current.next
+            if not current: return
+
+        return current
+
+
 if __name__ == "__main__":
 
     llist = SinglyLinkedList()
@@ -81,6 +94,10 @@ if __name__ == "__main__":
     llist.append(18)
 
     print("list:")
+    llist.print_list()
+
+    print("after inserting node:11 at index 5:")
+    llist.insert(5, 11)
     llist.print_list()
 
     print("after removing node at index 3:")
