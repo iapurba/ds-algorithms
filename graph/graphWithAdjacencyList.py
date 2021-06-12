@@ -12,11 +12,28 @@ class Graph:
 
 
     def add_edge(self, v1, v2):
+        if v1 == v2:
+            print(f"{v1} and {v2} are same vertex")
+            return
+
+        if v1 in self.graph[v2]:
+            print(f"{v1} and {v2} already connected")
+            return
+
         # As this is an undirected graph we must connect two nodes,
         # and other way around
         self.graph[v1].append(v2)
         self.graph[v2].append(v1)
-        return self
+
+
+    def remove_edge(self, v1, v2):
+        if v1 not in self.graph[v2]:
+            print(f"No connection between {v1} and {v2}")
+            return
+
+        self.graph[v1].pop(self.graph[v1].index(v2))
+        self.graph[v2].pop(self.graph[v2].index(v1))
+
 
 
     # Helper function to print the graph representation
@@ -41,9 +58,13 @@ if __name__ == "__main__":
     g.add_edge(0, 1)
     g.add_edge(0, 2)
     g.add_edge(0, 3)
+    g.add_edge(0, 3) # Print "0 and 3 already connected"
     g.add_edge(1, 2)
     g.add_edge(2, 3)
     g.add_edge(2, 4)
     g.add_edge(4, 5)
+
+    g.remove_edge(1, 5)
+    g.remove_edge(0, 2)
 
     g.print_graph()

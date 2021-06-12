@@ -12,6 +12,8 @@ class Graph:
     def add_edge(self, v1, v2):
         if v1 == v2:
             print(f"{v1} and {v2} are same, can not connect vertex to itself")
+            return
+
         self.adjMatrix[v1][v2] = 1
         self.adjMatrix[v2][v1] = 1
 
@@ -20,8 +22,10 @@ class Graph:
         if self.adjMatrix[v1][v2] == 0:
             print(f"No commection between {v1} and {v2}")
             return
+            
         self.adjMatrix[v1][v2] = 0
         self.adjMatrix[v2][v1] = 0
+
 
     # Print the adjacency matrix
     def print_matrix(self):
