@@ -12,6 +12,7 @@ def quick_sort(array, l, r):
 
     return array
 
+
 # Helper function to find the final resting position of the pivot
 def get_partition(array, l, r):
 

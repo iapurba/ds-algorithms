@@ -7,12 +7,15 @@ def merge_sort(array):
         return array
 
     mid = size // 2
+    # Spilt the array into two subarrays from midway
     L = array[:mid]
     R = array[mid:]
 
+    # Recursively sort both spited subarrays and merge them
     return merge(merge_sort(L), merge_sort(R))
 
 
+# Helper function to merge two sorted arrays
 def merge(left, right):
     result = []
     i = 0
@@ -29,6 +32,8 @@ def merge(left, right):
     return result + left[i:] + right[j:]
 
 
-nums = [2, 5, 3, 1, 6, 12, 8, 19, 10, 22, 14]
+if __name__ == "__main__":
 
-print(merge_sort(nums))
+    nums = [2, 5, 3, 1, 6, 12, 8, 19, 10, 22, 14]
+
+    print(merge_sort(nums))
