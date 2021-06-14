@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 # DFS graph searching algorithm 
-# using our own stack
+# using our own stack (iterative)
 def dfs(graph, start):
 
     stack = []
@@ -25,6 +25,23 @@ def dfs(graph, start):
                 stack.append(child)
 
 
+# DFS grapgh searching algorithm
+# Using callstack (recursive)
+def dfs_recursive(graph, start, visited=None):
+
+  if visited is None:
+    visited = set()
+
+  # Process the current node 
+  visited.add(start)
+  print(start)
+
+  # Add unvisited children to the callstack
+  for child in graph[start]:
+    if child not in visited:
+      dfs_recursive(graph, child, visited)
+
+
 if __name__ == "__main__":
 
     graph = {
@@ -38,4 +55,8 @@ if __name__ == "__main__":
         'H': set(['E', 'G']),
     }
 
+    print("DFS using our own stack (iterative): ")
     dfs(graph, 'C')
+
+    print("DFS using callstack (recursive): ")
+    dfs_recursive(graph, 'C')
