@@ -2,13 +2,7 @@
 
 # Implementation of dynamic programming to find out longest common subsequence
 
-def longest_common_subsequence(s1, s2):
-    '''
-    :type s1: str
-    :type s2: str
-    :rtype: int
-    '''
-
+def longest_common_subsequence(s1: str, s2: str) -> int:
     '''
     * create a dp table to cache the result of orginal subporblems.
     *
@@ -45,6 +39,6 @@ def longest_common_subsequence(s1, s2):
 
 if __name__ == "__main__":
 
-    print(longest_common_subsequence("", "azb")) # returns 0
-    print(longest_common_subsequence("aab", "azb")) # returns 2
-    print(longest_common_subsequence("aggtab", "gxtxayb")) #returns 4
+    print(longest_common_subsequence("", "azb"))  # returns 0
+    print(longest_common_subsequence("aab", "azb"))  # returns 2
+    print(longest_common_subsequence("aggtab", "gxtxayb"))  # returns 4
